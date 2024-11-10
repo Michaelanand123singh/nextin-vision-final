@@ -1,0 +1,81 @@
+/* styles/animations.css */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Utility classes for animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+  
+  /* Stagger children animations */
+  .stagger-children > * {
+    opacity: 0;
+  }
+  
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Premium hover effects */
+  .hover-card {
+    @apply relative overflow-hidden rounded-2xl transition-all duration-300;
+  }
+  
+  .hover-card::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-r
+           from-blue-600/20 to-purple-600/20 opacity-0
+           transition-opacity duration-300;
+  }
+  
+  .hover-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .hover-lift-shadow {
+    @apply transition-all duration-300
+           hover:-translate-y-1
+           hover:shadow-xl hover:shadow-blue-600/10;
+  }
+  
+  /* Gradient borders */
+  .gradient-border {
+    @apply relative rounded-2xl p-[1px] bg-gradient-to-r from-blue-600 to-purple-600;
+  }
+  
+  .gradient-border-content {
+    @apply rounded-2xl bg-white relative z-10;
+  }

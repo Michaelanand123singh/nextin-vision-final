@@ -1,0 +1,13 @@
+/* styles/components/portfolio.css */
+.portfolio-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .portfolio-item {
+    @apply relative overflow-hidden rounded-2xl group;
+  }
+  
+  .portfolio-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/90
+           opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }

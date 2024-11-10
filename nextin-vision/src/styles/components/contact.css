@@ -1,0 +1,11 @@
+/* styles/components/contact.css */
+.contact-form-container {
+    @apply max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200
+           focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600
+           transition-all duration-300;
+  }
+  

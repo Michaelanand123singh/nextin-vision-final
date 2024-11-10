@@ -1,0 +1,14 @@
+/* styles/components/hero.css */
+.hero-section {
+    @apply relative min-h-screen flex items-center justify-center
+           overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800;
+  }
+  
+  .hero-content {
+    @apply relative z-10 text-white text-center;
+  }
+  
+  .hero-video-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/30;
+  }
+  
