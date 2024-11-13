@@ -1,0 +1,168 @@
+/* ContactForm.css */
+.contact-form-container {
+    @apply max-w-2xl mx-auto p-6;
+  }
+  
+  .contact-form {
+    @apply bg-white rounded-xl shadow-lg p-8;
+    animation: form-appear 0.5s ease-out;
+  }
+  
+  .form-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6 mb-8;
+  }
+  
+  .form-field {
+    @apply relative;
+  }
+  
+  .form-field.full-width {
+    @apply md:col-span-2;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .required {
+    @apply text-red-500 ml-0.5;
+  }
+  
+  .form-input,
+  .form-textarea {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 bg-white transition-all duration-200
+           focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none;
+  }
+  
+  .form-input.error,
+  .form-textarea.error {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+  }
+  
+  .form-textarea {
+    @apply resize-none min-h-[120px];
+  }
+  
+  .error-message {
+    @apply absolute -bottom-5 left-0 text-xs text-red-500 mt-1;
+  }
+  
+  .submit-button {
+    @apply w-full flex items-center justify-center gap-2 px-6 py-3 text-white bg-blue-600 
+           rounded-lg font-medium transition-all duration-200 relative overflow-hidden;
+  }
+  
+  .submit-button:not(:disabled) {
+    @apply hover:bg-blue-700;
+  }
+  
+  .submit-button:disabled {
+    @apply bg-gray-400 cursor-not-allowed;
+  }
+  
+  .button-icon {
+    @apply transition-transform duration-200;
+  }
+  
+  .submit-button:not(:disabled):hover .button-icon {
+    @apply transform translate-x-1;
+  }
+  
+  .loading-spinner {
+    @apply w-6 h-6 border-3 border-white border-t-transparent rounded-full;
+    animation: spin 1s linear infinite;
+  }
+  
+  .status-message {
+    @apply flex items-center gap-2 mt-4 p-4 rounded-lg text-sm font-medium;
+  }
+  
+  .status-message.success {
+    @apply bg-green-50 text-green-700;
+  }
+  
+  .status-message.error {
+    @apply bg-red-50 text-red-700;
+  }
+  
+  /* Animations */
+  @keyframes form-appear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  .form-input:focus-visible,
+  .form-textarea:focus-visible,
+  .submit-button:focus-visible {
+    @apply ring-2 ring-blue-500 ring-offset-2 outline-none;
+  }
+  
+  /* Hover effects */
+  .form-input:hover,
+  .form-textarea:hover {
+    @apply border-gray-400;
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .contact-form {
+      @apply bg-gray-800;
+    }
+  
+    .form-label {
+      @apply text-gray-200;
+    }
+  
+    .form-input,
+    .form-textarea {
+      @apply bg-gray-700 border-gray-600 text-white;
+    }
+  
+    .form-input:hover,
+    .form-textarea:hover {
+      @apply border-gray-500;
+    }
+  
+    .status-message.success {
+      @apply bg-green-900 text-green-200;
+    }
+  
+    .status-message.error {
+      @apply bg-red-900 text-red-200;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .contact-form {
+      @apply p-6;
+    }
+  
+    .form-grid {
+      @apply gap-4;
+    }
+  }
+  
+  /* Print styles */
+  @media print {
+    .contact-form {
+      @apply shadow-none p-0;
+    }
+  
+    .submit-button {
+      @apply hidden;
+    }
+  }
