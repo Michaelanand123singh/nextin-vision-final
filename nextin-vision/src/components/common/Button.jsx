@@ -1,93 +1,29 @@
-// Button.jsx
 import React from 'react';
-import { Loader2 } from 'lucide-react';
-import './Button.css';
 
-const Button = ({
-  children,
-  variant = 'primary',
-  size = 'md',
-  className = '',
-  icon,
-  iconPosition = 'left',
-  loading = false,
-  disabled = false,
-  fullWidth = false,
-  ripple = true,
-  elevation = false,
-  rounded = 'md',
-  ...props
-}) => {
-  const [coords, setCoords] = React.useState({ x: -1, y: -1 });
-  const [isRippling, setIsRippling] = React.useState(false);
-
-  React.useEffect(() => {
-    if (coords.x !== -1 && coords.y !== -1) {
-      setIsRippling(true);
-      setTimeout(() => setIsRippling(false), 500);
-    } else {
-      setIsRippling(false);
-    }
-  }, [coords]);
-
-  React.useEffect(() => {
-    if (!isRippling) setCoords({ x: -1, y: -1 });
-  }, [isRippling]);
-
-  const handleRipple = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    setCoords({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
+const Button = ({ children, variant = 'primary', size = 'md', className = '', ...props }) => {
+  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors';
+  
+  const variants = {
+    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
+    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
   };
-
-  const baseStyles = [
-    'btn-base',
-    `btn-${variant}`,
-    `btn-${size}`,
-    `rounded-${rounded}`,
-    disabled && 'btn-disabled',
-    loading && 'btn-loading',
-    fullWidth && 'btn-full',
-    elevation && 'btn-elevation',
-    className
-  ].filter(Boolean).join(' ');
-
+  
+  const sizes = {
+    sm: 'px-3 py-1.5 text-sm',
+    md: 'px-4 py-2 text-base',
+    lg: 'px-6 py-3 text-lg'
+  };
+  
   return (
-    <button
-      className={baseStyles}
-      disabled={disabled || loading}
-      onClick={(e) => {
-        if (ripple) handleRipple(e);
-        props.onClick?.(e);
-      }}
+    <button 
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
-      <span className="btn-content">
-        {loading && (
-          <Loader2 className="btn-spinner" />
-        )}
-        {icon && iconPosition === 'left' && !loading && (
-          <span className="btn-icon btn-icon-left">{icon}</span>
-        )}
-        <span>{children}</span>
-        {icon && iconPosition === 'right' && !loading && (
-          <span className="btn-icon btn-icon-right">{icon}</span>
-        )}
-      </span>
-      {ripple && isRippling && (
-        <span
-          className="ripple"
-          style={{
-            left: coords.x,
-            top: coords.y
-          }}
-        />
-      )}
+      {children}
     </button>
   );
 };
 
-export { Button };
-export default Button;
+export { Button };  // Named export
+export default Button;  // Default export

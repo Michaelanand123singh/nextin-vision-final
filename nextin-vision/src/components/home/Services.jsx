@@ -6,7 +6,7 @@ const Services = () => {
   const services = [
     {
       title: 'Brand Story Videos',
-      description: 'Craft compelling narratives that showcase your company's mission, values, and unique positioning.',z
+      description: 'Craft compelling narratives that showcase your company's mission, values, and unique positioning.',
       icon: VideoCamera,
       price: '2,000'
     },
